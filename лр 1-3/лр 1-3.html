@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме</title>
+</head>
+<body>
+    <header>
+        <h1>Резюме</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Обо мне</h2>   
+            <p>Привет, меня зовут Александра.</p>
+            <p><em>Мне 19 лет и я проживаю в городе Гродно, в Беларуси.</em></p>
+            <p><strong>На данный момент я учусь на 3-ем курсе в Гродненском государственном политехническом колледже.</strong></p>
+            <p><u>Специальность моя "Программное обеспечение информационных технологий"</u></p>
+            <p><s>В будущем я хочу работать графическим дизайнером или геймдизайнер</s></p>
+        </section>
+
+    <section>
+        <a href="#video">Короткое видео</a>
+    </section>
+
+        <section>
+            <h2>Мои любимые блюда</h2>
+            <ul>
+                <li>Макароны с сыром</li>
+                <li>Жареная картошка</li>
+                <li>Пельмени</li> 
+                <li>Борщ</li>
+                <li>Запечённая курица</li> 
+                <li>Овощной салат</li>
+            </ul>
+        </section>
+            
+        <section>
+            <h2>Мои любимые фильмы, сериалы, мультфильмы</h2>    
+            <ol>
+                <li>Гарри Поттер</li>
+                <li>Волчонок</li>
+                <li>Форсаж</li>
+                <li>Дневники вампиров</li>
+                <li>Мистер и Миссис Смит</li>
+                <li>Гоголь</li>
+            </ol>
+        </section>
+
+    <a href="http://ggpk.by/index.php">Сайт колледжа</a>
+
+        <section>
+            <h2>Изображения</h2>
+            <figure>
+                <img src="1.jpg">
+                <figcaption>Морда леопарда</figcaption>
+            </figure>
+            <figure>
+                <img src="2.jpg">
+                <figcaption>Природа</figcaption>
+            </figure>
+            <figure>
+                <img src="3.jpg">
+                <figcaption>Хищник</figcaption>
+            </figure>
+        </section>
+
+    <video id="video" src="видео.mp4" controls></video>
+
+    <audio src="мелодия.mp3" controls></audio>
+
+    <style>
+        /* 1. Синтаксис CSS */
+code {
+  font-family: monospace;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  padding: 2px;
+}
+
+/* 2. Способы внедрения CSS */
+.headline {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 3. Селекторы в CSS */
+section h2 {
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+/* 4. Единицы измерения в CSS */
+p {
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/* 5. Основные группы свойств CSS */
+/* Шрифт */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Цвет */
+em {
+  color: #ff9900;
+}
+
+strong {
+  color: #008000;
+}
+
+u {
+  text-decoration: underline;
+}
+
+s {
+  text-decoration: line-through;
+}
+
+/* Оформление текста */
+p:first-child {
+  text-indent: 20px;
+}
+
+/* Списки */
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+ol {
+  list-style-type: decimal;
+  margin-left: 20px;
+}
+
+/* Таблицы */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+
+/* Формы */
+form {
+  margin-bottom: 20px;
+}
+
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* 6. Каскадность CSS и правило приоритетов */
+section h2 {
+  font-size: 28px;
+  color: #ff0000;
+}
+
+#video {
+  width: 100%;
+  height: auto;
+}
+
+audio {
+  width: 100%;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+    
+        table tr:first-child th,
+        table tr:last-child td {
+            border-width: 2px;
+            font-weight: bold;
+        }
+        
+        table tr:first-child th:first-child,
+        table tr:last-child td:first-child {
+            border-left-width: 2px;
+        }
+        
+        table tr:first-child th:last-child,
+        table tr:last-child td:last-child {
+            border-right-width: 2px;
+        }
+    </style>
+    </main>
+
+<table>
+    <tr>
+        <th>Сериалы</th>
+        <th>Фильмы</th>
+    </tr>
+    <tr>
+        <td rowspan="2">Скрипач<br>Люцифер</td>
+        <td>Код да Винчи</td>
+    </tr>
+    <tr>   
+        <td>Красотка на взводе</td>
+    </tr>
+    <tr>
+        <td colspan="2">Ангел или Демон</td>
+    </tr>
+
+</table>
+
+<form>
+    <h2>Опрос</h2>
+    <p>Какой ваш любимый фильм?</p>
+    <input type="radio" name="favoriteFilm" value="Гарри Поттер"> Гарри Поттер<br>
+    <input type="radio" name="favoriteFilm" value="Последствие"> Последствие<br>
+    <input type="radio" name="favoriteFilm" value="Форсаж"> Форсаж<br>
+    <input type="radio" name="favoriteFilm" value="Голодные игры"> Голодные игры<br>
+    <input type="radio" name="favoriteFilm" value="Мистер и Миссис Смит"> Мистер и Миссис Смит<br>
+    <input type="radio" name="favoriteFilm" value="Гоголь"> Гоголь<br>
+    <br>
+    <button type="submit">Отправить</button>
+</form>
+
+<p>&copy; Копирайт</p>
+<p>&trade; Знак товарного знака</p>
+<p>&reg; Знак зарегистрированного товарного знака</p>
+
+
+
+</body>
+</html>
