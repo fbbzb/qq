@@ -1,0 +1,26 @@
+﻿    body {
+        background-image: url("1.jpeg");  /* Устанавливает фоновое изображение для элемента body */
+        background-repeat: repeat-x;  /* Задает повторение фонового изображения по горизонтали */
+        font-family: Arial;  /* Задает шрифт для текста внутри элемента body */
+        font-size: 10pt;  /* Задает размер шрифта для текста внутри элемента body */
+        color: black;  /* Задает цвет текста для текста внутри элемента body */
+    }
+
+    .birthdate {
+        text-decoration: line-through;  /* Добавляет линию сквозь текст для элементов с классом birthdate */
+        color: red;  /* Задает красный цвет текста для элементов с классом birthdate */
+        text-align: justify;  /* Выравнивает текст по ширине для элементов с классом birthdate */
+    }
+    .hobbies {
+        list-style-type: disc;  /* Задает маркер в виде закрашенного круга для элементов с классом hobbies */
+        list-style-position: inside;  /* Помещает маркер внутри элемента с классом hobbies */
+    }
+
+    ul.hobbies li {
+        color: rgb(0, 0, 0);  /* Задает черный цвет текста для элементов списка, которые содержатся в элементе с классом hobbies */
+    }
+    p::first-letter {
+        font-size: 30pt;
+        color: blue;
+        text-decoration: underline;
+    }
