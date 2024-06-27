@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Задание 5</title>
+    <script>
+        function manipulateStrings() {
+            let s1 = "Я люблю Беларусь";
+            let s2 = "Я учусь в Политехническом колледже";
+
+            // Определение длины строки s2
+            let lengthS2 = s2.length;
+
+            // Выделение n-го символа в строке s1 (n - номер варианта)
+            let n = 3; // Номер варианта
+            let nthCharS1 = s1.charAt(n - 1); // Индексация начинается с 0
+            let asciiCodeNthChar = nthCharS1.charCodeAt(0);
+
+            // Замена в строке s1 слова "Беларусь" на "Гродно"
+            let newS1 = s1.replace("Беларусь", "Гродно");
+
+            document.write("Строка s1: " + s1 + "<br>");
+            document.write("Строка s2: " + s2 + "<br>");
+            document.write("Длина строки s2: " + lengthS2 + "<br>");
+            document.write(n + "-й символ в строке s1: " + nthCharS1 + "<br>");
+            document.write("ASCII-код " + n + "-го символа в строке s1: " + asciiCodeNthChar + "<br>");
+            document.write("Новая строка s1 после замены: " + newS1 + "<br>");
+        }
+    </script>
+</head>
+<body onload="manipulateStrings()">
+</body>
+</html>

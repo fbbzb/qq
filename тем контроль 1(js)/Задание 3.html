@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Задание 3</title>
+    <script>
+        function processArray() {
+            let arr = [23, 45, 12, 78, 34, 89, 56]; // Пример массива из 7 элементов
+            
+            // Найти максимальный элемент
+            let max = Math.max(...arr);
+            
+            // Исходный массив
+            document.write("Исходный массив: " + arr.join(", ") + "<br>");
+            document.write("Максимальный элемент: " + max + "<br>");
+            
+            // Удалить последний элемент
+            arr.pop();
+            
+            // Изменённый массив
+            document.write("Изменённый массив: " + arr.join(", ") + "<br>");
+        }
+    </script>
+</head>
+<body onload="processArray()">
+</body>
+</html>
