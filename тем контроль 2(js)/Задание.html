@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пример HTML-документа</title>
+    <style>
+        body {
+            background-color: lightblue; /* Пример цвета фона */
+        }
+
+        /* Стили для элемента №1, применяемые после нажатия кнопки */
+        .styled-paragraph {
+            color: red;
+            background-color: gray;
+            font-family: verdana;
+            font-size: 20px;
+            font-weight: bold;
+            border: 1px solid green;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Получить информацию о цвете фона документа
+            const backgroundColor = window.getComputedStyle(document.body).backgroundColor;
+            
+            // Вывести полученную информацию через 7 секунд после запуска страницы
+            setTimeout(function() {
+                alert("Цвет фона документа: " + backgroundColor);
+            }, 7000);
+
+            // Создать копию элемента №3 (изображения)
+            const imgElement = document.querySelector('img');
+            const imgClone = imgElement.cloneNode(true);
+            
+            // Вставить копию изображения в начало документа
+            document.body.insertBefore(imgClone, document.body.firstChild);
+
+            // Добавить обработчик события на кнопку
+            const styleButton = document.getElementById('styleButton');
+            styleButton.addEventListener('click', function() {
+                const paragraph = document.querySelector('p');
+                paragraph.classList.add('styled-paragraph');
+            });
+
+            // Получить информацию о количестве посещённых страниц во время истории посещения
+            const historyLength = history.length;
+
+            // Создать и настроить новое окно
+            const newWindow = window.open('', 'Скоморох Александра Александровна', 'width=100,height=150,scrollbars=no');
+            newWindow.document.write(`<p>Количество посещённых страниц: ${historyLength}</p>`);
+            newWindow.document.title = 'Скоморох Александра Александровна';
+        });
+    </script>
+</head>
+<body>
+    <!-- Фамилия Имя Отчество -->
+    <p>Скоморох Александра Александровна</p>
+
+    <!-- Ссылка на любимый сайт -->
+    <a href="https://classroom.google.com" target="_blank">Мой любимый сайт</a>
+
+    <!-- Любое изображение -->
+    <img src="1.jpg" alt="Описание изображения">
+
+    <!-- Кнопка для применения стилей к элементу №1 -->
+    <button id="styleButton">Применить стиль</button>
+</body>
+</html>
