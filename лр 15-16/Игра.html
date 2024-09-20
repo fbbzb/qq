@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поймай яблоко</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        canvas {
+            background-color: #87CEEB;
+            display: block;
+        }
+        #game-info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="gameCanvas"></canvas>
+<div id="game-info">
+    <span id="score">Очки: 0</span> | <span id="lives">Жизни: 3</span>
+</div>
+
+<script>
+    // Переменные для игры
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Класс корзины
+    class Basket {
+        constructor() {
+            this.width = 100;
+            this.height = 30;
+            this.x = canvas.width / 2 - this.width / 2;
+            this.y = canvas.height - this.height - 20;
+            this.speed = 20;
+        }
+
+        // Отрисовка корзины
+        draw() {
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
+
+        // Движение корзины влево
+        moveLeft() {
+            if (this.x > 0) {
+                this.x -= this.speed;
+            }
+        }
+
+        // Движение корзины вправо
+        moveRight() {
+            if (this.x + this.width < canvas.width) {
+                this.x += this.speed;
+            }
+        }
+    }
+
+    // Класс яблока
+    class Apple {
+        constructor() {
+            this.radius = 20;
+            this.x = Math.random() * (canvas.width - this.radius * 2) + this.radius;
+            this.y = -this.radius;
+            this.speed = Math.random() * 2 + 2;
+        }
+
+        // Отрисовка яблока
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = "red";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        // Обновление положения яблока
+        update() {
+            this.y += this.speed;
+        }
+
+        // Проверка столкновения с корзиной
+        isCaught(basket) {
+            return (
+                this.y + this.radius > basket.y &&
+                this.x > basket.x &&
+                this.x < basket.x + basket.width
+            );
+        }
+
+        // Проверка, упало ли яблоко ниже экрана
+        isOutOfBounds() {
+            return this.y - this.radius > canvas.height;
+        }
+    }
+
+    // Класс игры
+    class Game {
+        constructor() {
+            this.basket = new Basket();
+            this.apples = [];
+            this.score = 0;
+            this.lives = 3;
+            this.isGameOver = false;
+            this.spawnInterval = 2000;
+            this.lastSpawnTime = 0;
+
+            // Управление корзиной
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "ArrowLeft") {
+                    this.basket.moveLeft();
+                } else if (e.key === "ArrowRight") {
+                    this.basket.moveRight();
+                }
+            });
+        }
+
+        // Запуск игры
+        start() {
+            requestAnimationFrame(() => this.update());
+        }
+
+        // Обновление состояния игры
+        update(timestamp) {
+            if (this.isGameOver) {
+                this.showGameOver();
+                return;
+            }
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Отрисовка корзины
+            this.basket.draw();
+
+            // Отрисовка и обновление яблок
+            this.apples.forEach((apple, index) => {
+                apple.update();
+                apple.draw();
+
+                // Проверка столкновения яблока с корзиной
+                if (apple.isCaught(this.basket)) {
+                    this.apples.splice(index, 1);
+                    this.score++;
+                    document.getElementById("score").textContent = "Очки: " + this.score;
+                }
+
+                // Проверка, упало ли яблоко на землю
+                if (apple.isOutOfBounds()) {
+                    this.apples.splice(index, 1);
+                    this.lives--;
+                    document.getElementById("lives").textContent = "Жизни: " + this.lives;
+                    if (this.lives === 0) {
+                        this.isGameOver = true;
+                    }
+                }
+            });
+
+            // Появление новых яблок
+            if (timestamp - this.lastSpawnTime > this.spawnInterval) {
+                this.apples.push(new Apple());
+                this.lastSpawnTime = timestamp;
+            }
+
+            // Продолжение игры
+            requestAnimationFrame((t) => this.update(t));
+        }
+
+        // Отображение экрана с сообщением о проигрыше
+        showGameOver() {
+            ctx.fillStyle = "black";
+            ctx.font = "48px Arial";
+            ctx.textAlign = "center";
+            ctx.fillText("Игра окончена!", canvas.width / 2, canvas.height / 2);
+        }
+    }
+
+    // Запуск игры
+    const game = new Game();
+    game.start();
+
+</script>
+
+</body>
+</html>
